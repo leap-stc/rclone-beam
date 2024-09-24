@@ -2,9 +2,6 @@ channels:
   - conda-forge
 
 dependencies:
-  - openssh
+  - rclone
 
-  # Install packages from pip
-  - pip
-  - pip:
-    - jupyter-sshd-proxy
+

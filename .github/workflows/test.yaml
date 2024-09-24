@@ -33,7 +33,7 @@ jobs:
         REPO_DIR: /srv/repo
 
         # Uncomment and modify the following line with your image name.
-        IMAGE_NAME: "leap-stc/test-image-balwada"
+        IMAGE_NAME: "leap-stc/rclone-beam"
 
     # Lets us monitor disks getting full as images get bigger over time
     - name: Show how much disk space is left

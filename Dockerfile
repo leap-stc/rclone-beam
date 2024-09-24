@@ -1,8 +1,7 @@
 # Inherit from an upstream image
-FROM quay.io/pangeo/pangeo-notebook:2024.08.18
+FROM apache/beam_python3.10_sdk:2.59.0
 
 COPY environment.yml /tmp/environment.yml
 
 RUN mamba env update --prefix ${CONDA_DIR} --file /tmp/environment.yml
 
-RUN ls
