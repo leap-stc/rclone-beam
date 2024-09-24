@@ -1,9 +1,12 @@
 FROM apache/beam_python3.10_sdk:2.59.0
 
-# Install mamba using Micromamba installer
+# Install rclone
 RUN apt-get update && apt-get install -y curl
-RUN curl -fsSL https://micromamba.snakepit.net/api/micromamba/linux-64/latest | tar -xvj bin/micromamba -O > /usr/local/bin/micromamba && chmod +x /usr/local/bin/micromamba
-RUN /usr/local/bin/micromamba shell init -p /opt/conda -s bash
-
-COPY environment.yml /tmp/environment.yml
-RUN /usr/local/bin/micromamba env update -f /tmp/environment.yml
+RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
+    && unzip rclone-current-linux-amd64.zip \
+    && cp rclone-*-linux-amd64/rclone /usr/bin/ \
+    && chown root:root /usr/bin/rclone \
+    && chmod 755 /usr/bin/rclone \
+    && mkdir -p /usr/local/share/man/man1 \
+    && cp rclone-*-linux-amd64/rclone.1 /usr/local/share/man/man1/ \
+    && mandb
